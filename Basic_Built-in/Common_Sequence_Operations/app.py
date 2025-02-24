@@ -166,12 +166,3 @@ print(u.index('Kevin')) # output = 0
 p = ['pig', 'cow', 'horse']
 a, b, c = p
 print(a, b, c) # output = pig, cow, horse
-
-
-
-
-
-
-
-
-

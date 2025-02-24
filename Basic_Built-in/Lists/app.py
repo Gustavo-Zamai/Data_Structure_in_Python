@@ -29,4 +29,35 @@ y = [12, 13]
 x.extend(y) # add the elements of y to the end of x
 print(x) # output = [5, 3, 8, 6, 12, 13]
 
-# Video was at 19:49
+# Insert - insert an item at a specific index in a list, (index, item)
+x = [5, 3, 8, 6]
+x.insert(1, 7) # add item 7 to the 1 index position
+print(x) # output = [5, 7, 3, 8, 6]
+x.insert(1, ['a', 'm']) # add a list with 'a' and 'm', at the 1 index position
+print(x) # output = [5, ['a', 'm'], 7, 3, 8, 6]
+
+# Pop - remove the last item off the list
+x = [5, 3, 8, 6]
+x.pop() # remove the last item, 6,from the list
+print(x) # output = [5, 3, 8]
+print(x.pop()) # output = 8, the current last item
+
+# Remove - remove the first occurrence of a specified item from the list
+x = [5, 3, 8, 6, 3]
+x.remove(3) # remove the first occurrence of 3, from the list
+print(x) # output = [5, 8, 6, 3]
+
+# Reverse - reverse the order of the list, changes the original list
+x = [5, 3, 8, 6]
+x.reverse() # reverse the order of the list
+print(x) # output = [6, 8, 3, 5] 
+
+# Sort - sort the list in ascending order, changes the original list
+x = [5, 3, 8, 6]
+x.sort() # sort the list in ascending order
+print(x) # output = [3, 5, 6, 8]
+
+# Reverse sort
+x = [5, 3, 8, 6]
+x.sort(reverse=True) # sort the list in descending order
+print(x) # output = [8, 6, 5, 3]
