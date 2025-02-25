@@ -31,7 +31,7 @@ Functions:
     - Public:
         - push, pop, peek
     - Private:
-        - swap, __floatUp__, __bubbleDown__, __str
+        - __swap, __floatUp, __bubbleDown, __str
 '''
 class MaxHeap:
     def __init__(self, items=[]):
