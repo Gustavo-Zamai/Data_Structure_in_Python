@@ -2,7 +2,6 @@
 Attr: 
    - Root: pointer to the beginning of the list
    - Size: number of nodes in the list
-
 Operations:
     - find
     - add
@@ -11,7 +10,6 @@ Operations:
 '''
 # Node Class
 class Node:
-
     def __init__(self, data, next=None, previous=None):
         self.data = data
         self.next_node = next
@@ -81,7 +79,6 @@ print(myList.root)
 
 '''
 Circular Linked List
-
 - Last pointer, points to first element of list, loopback
 - Add: insert a new element at the second position, index 1
 - Better for modeling continuos looping objects
@@ -165,6 +162,74 @@ cll.print_list()
 
 '''
 Doubly linked list
-
 - Each node has both a next and previous pointer
 '''
+class DoublyLinkedList:
+
+    def __init__(self, root=None):
+        self.root = root
+        self.last = root
+        self.size = 0
+
+    def add(self, data):
+        if self.size == 0:
+            self.root = Node(data)
+            self.last = self.root
+        else:
+            new_node = Node(data, self.root)
+            self.root.previous_node = new_node
+            self.root = new_node
+        self.size += 1
+
+    def find(self, data):
+        current_node = self.root
+        while current_node is not None:
+            if current_node.data == data:
+                return data
+            elif current_node.next_node == None:
+                return False
+            else:
+                current_node = current_node.next_node
+
+    def remove(self, data):
+        current_node = self.root
+        while current_node is not None:
+            if current_node.data == data: # found item
+                if current_node.previous_node is not None:
+                    if current_node.next_node is not None:
+                        current_node.previous_node.next_node =  current_node.next_node # remove middle list item
+                        current_node.next_node.previous_node = current_node.previous_node
+                    else: # last node
+                        current_node.previous_node.next_node = None
+                        self.last = current_node.previous_node
+                else:
+                    self.root = current_node.next_node
+                    current_node.next_node.previous_node = self.root
+                self.size -= 1
+                return True # item removed
+            else:
+                current_node = current_node.next_node
+        return False # item not found
+    
+    def print_list(self):
+        if self.root is None:
+            return
+        current_node = self.root
+        print(current_node, end=' <-> ')
+        while current_node.next_node is not None:
+            current_node = current_node.next_node
+            print(current_node, end=' <-> ')
+        print()
+
+# Testing Doubly Linked List
+dll = DoublyLinkedList()
+for i in [5, 9, 3, 8, 9]:
+    dll.add(i)
+
+print("Size = " + str(dll.size))
+dll.print_list()
+dll.remove(9)
+print("Size = " + str(dll.size))
+print(dll.find(3))
+print(dll.find(12))
+    
